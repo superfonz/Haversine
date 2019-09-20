@@ -1,10 +1,14 @@
 from tkinter import *
 from tkinter import filedialog
+from tkinter import ttk
 from math import sin, cos, sqrt, atan2, radians
 import csv
 
 root = Tk()
 root.configure(background="#31394d")
+s = ttk.Style()
+s.theme_use('alt')
+s.configure("red.Horizontal.TProgressbar", background="#ff6961")
 hs = 0
 root.title("Haversine Formula")
 
@@ -28,7 +32,6 @@ def browsefunc(path):
             for row in FP_reader:
                 FPLAT.append(float(row[0]))
                 FPLONG.append(float(row[1]))
-            print(FPLAT)
     elif path == "pathE2":
         pathE2.delete(0, END)
         pathE2.insert(0, filename)
@@ -69,7 +72,6 @@ def Start_Application():
         else:
             Data.write("N\n")
     Data.close()
-
 
 FPLAT = []
 FPLONG =[]
@@ -137,5 +139,11 @@ ResultFileName.grid(row=11, column=0)
 Submit = Button(root, text="Submit", highlightbackground="#31394d", command=lambda :Start_Application())
 Submit.grid(row=12, column=1)
 
+progress = ttk.Progressbar(root, orient = HORIZONTAL, length = 300, mode = 'determinate',style ="red.Horizontal.TProgressbar")
+progress.grid(row=13,column=0)3
+
+
+progress1 = ttk.Progressbar(root, orient = HORIZONTAL, length = 300, mode = 'determinate',style ="red.Horizontal.TProgressbar")
+progress1.grid(row=14,column=0)
 
 root.mainloop()
