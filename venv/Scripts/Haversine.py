@@ -24,13 +24,22 @@ def haversine(lat1, long1, lat2, long2):
     distance = distance * 0.621371
     return distance
 
+
+def combine_funcs(*funcs):
+    def combined_func(*args, **kwargs):
+        for f in funcs:
+            f(*args, **kwargs)
+    return combined_func
+
+def LabelColor():
+    Status.configure(text="Status = In Progress", foreground="orange")
+
 def browsefunc(path):
     filename = filedialog.askopenfilename()
     if path == "pathE1":
         pathE1.delete(0, END)
         pathE1.insert(0, filename)
         pathE1.xview(END)
-        Status.configure(text="Status = In Progress", foreground="orange")
         with open(filename) as FP:
             FP_reader = csv.reader(FP, delimiter=",")
             for row in FP_reader:
@@ -140,11 +149,11 @@ ResultFileName = Entry(root)
 ResultFileName.config(width=30)
 ResultFileName.grid(row=11, column=0)
 
-Submit = Button(root, text="Submit", highlightbackground="#31394d", command=lambda :Start_Application())
-Submit.grid(row=12, column=1)
-
 Status = Label(root,text="Status = Not Started",background="#31394d", font=("Helvetica", 20), foreground="white")
 Status.grid(row=13,column=0)
+
+Submit = Button(root, text="Submit", highlightbackground="#31394d", command=combine_funcs(lambda :LabelColor(),lambda :Start_Application()))
+Submit.grid(row=12, column=1)
 
 '''
 progress = ttk.Progressbar(root, orient = HORIZONTAL, length = 300, mode = 'determinate',style ="red.Horizontal.TProgressbar")
