@@ -80,58 +80,62 @@ Intro = Label(root, text="Lat/Long Distance Calculator", background="#31394d", f
               foreground="white")
 Intro.grid(row=0, column=0)
 
+creator = Label(root, text="Created By Alfonzo Sanfilippo", background="#31394d", font=("Helvetica", 12),
+              foreground="white")
+creator.grid(row=1,column=0)
+
 FL = Label(root, text="First Latitude & Longitude Point", background="#31394d", font=("Helvetica", 20),
            foreground="white")
 FL.config()
-FL.grid(row=1, column=0)
+FL.grid(row=2, column=0)
 
 browsebutton = Button(root, text="Browse", highlightbackground="#31394d", command=lambda: browsefunc("pathE1"))
-browsebutton.grid(row=2, column=1)
+browsebutton.grid(row=3, column=1)
 
 pathE1 = Entry(root)
 pathE1.config(width=50)
-pathE1.grid(row=2, column=0)
+pathE1.grid(row=3, column=0)
 
 SL = Label(root, text="Second Latitude & Longitude Point", background="#31394d", font=("Helvetica", 20),
            foreground="white")
-SL.grid(row=3, column=0)
+SL.grid(row=4, column=0)
 
 browsebutton2 = Button(root, text="Browse", highlightbackground="#31394d", command=lambda: browsefunc("pathE2"))
-browsebutton2.grid(row=4, column=1)
+browsebutton2.grid(row=5, column=1)
 
 pathE2 = Entry(root)
 pathE2.config(width=50)
-pathE2.grid(row=4, column=0)
+pathE2.grid(row=5, column=0)
 
 DT = Label(root, text="Distance Between the Points", background="#31394d", font=("Helvetica", 20), foreground="white")
-DT.grid(row=5, column=0)
+DT.grid(row=6, column=0)
 
 DistanceBox = Entry(root)
 DistanceBox.config(width=10)
-DistanceBox.grid(row=6, column=0)
+DistanceBox.grid(row=7, column=0)
 
 #unit = Checkbutton(root, text="km?", background="#31394d", font=("Helvetica", 14), foreground="white")
 #unit.grid(row=6, column=1)
 
 Dir = Label(root, text="Where to Place the Results", background="#31394d", font=("Helvetica", 20), foreground="white")
-Dir.grid(row=7, column=0)
+Dir.grid(row=8, column=0)
 
 pathE3 = Entry(root)
 pathE3.config(width=50)
-pathE3.grid(row=8, column=0)
+pathE3.grid(row=9, column=0)
 
 browsebutton3 = Button(root, text="Browse", highlightbackground="#31394d", command=lambda: DirPath())
-browsebutton3.grid(row=8, column=1)
+browsebutton3.grid(row=9, column=1)
 
 ResultName = Label(root, text="Result File Name", background="#31394d", font=("Helvetica", 20), foreground="white")
-ResultName.grid(row=9, column=0)
+ResultName.grid(row=10, column=0)
 
 ResultFileName = Entry(root)
 ResultFileName.config(width=30)
-ResultFileName.grid(row=10, column=0)
+ResultFileName.grid(row=11, column=0)
 
 Submit = Button(root, text="Submit", highlightbackground="#31394d", command=lambda :Start_Application())
-Submit.grid(row=11, column=1)
+Submit.grid(row=12, column=1)
 
 
 root.mainloop()
