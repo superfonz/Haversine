@@ -3,12 +3,15 @@ from tkinter import filedialog
 from tkinter import ttk
 from math import sin, cos, sqrt, atan2, radians
 import csv
+import queue
 
 root = Tk()
 root.configure(background="#31394d")
-s = ttk.Style()
-s.theme_use('alt')
-s.configure("red.Horizontal.TProgressbar", background="#ff6961")
+
+#s = ttk.Style()
+#s.theme_use('alt')
+#s.configure("red.Horizontal.TProgressbar", background="#ff6961")
+
 hs = 0
 root.title("Haversine Formula")
 
@@ -27,6 +30,7 @@ def browsefunc(path):
         pathE1.delete(0, END)
         pathE1.insert(0, filename)
         pathE1.xview(END)
+        Status.configure(text="Status = In Progress", foreground="orange")
         with open(filename) as FP:
             FP_reader = csv.reader(FP, delimiter=",")
             for row in FP_reader:
@@ -61,7 +65,6 @@ def Start_Application():
             y = SPLAT[SPLAT.index(j)]
             z = SPLONG[SPLAT.index(j)]
             hs = haversine(w,x,y,z)
-            print(hs)
             dbhs=DistanceBox.get()
             if hs < float(dbhs):
                 bl = True
@@ -72,6 +75,7 @@ def Start_Application():
         else:
             Data.write("N\n")
     Data.close()
+    Status.configure(text="Status = Completed", foreground="green")
 
 FPLAT = []
 FPLONG =[]
@@ -139,11 +143,15 @@ ResultFileName.grid(row=11, column=0)
 Submit = Button(root, text="Submit", highlightbackground="#31394d", command=lambda :Start_Application())
 Submit.grid(row=12, column=1)
 
+Status = Label(root,text="Status = Not Started",background="#31394d", font=("Helvetica", 20), foreground="white")
+Status.grid(row=13,column=0)
+
+'''
 progress = ttk.Progressbar(root, orient = HORIZONTAL, length = 300, mode = 'determinate',style ="red.Horizontal.TProgressbar")
-progress.grid(row=13,column=0)
+progress.grid(row=14,column=0)
 
 
 progress1 = ttk.Progressbar(root, orient = HORIZONTAL, length = 300, mode = 'determinate',style ="red.Horizontal.TProgressbar")
-progress1.grid(row=14,column=0)
-
+progress1.grid(row=15,column=0)
+'''
 root.mainloop()
