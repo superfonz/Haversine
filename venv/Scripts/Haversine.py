@@ -140,7 +140,7 @@ Submit = Button(root, text="Submit", highlightbackground="#31394d", command=lamb
 Submit.grid(row=12, column=1)
 
 progress = ttk.Progressbar(root, orient = HORIZONTAL, length = 300, mode = 'determinate',style ="red.Horizontal.TProgressbar")
-progress.grid(row=13,column=0)3
+progress.grid(row=13,column=0)
 
 
 progress1 = ttk.Progressbar(root, orient = HORIZONTAL, length = 300, mode = 'determinate',style ="red.Horizontal.TProgressbar")
